@@ -3,7 +3,7 @@ orbs:
   aws-cli: circleci/aws-cli@1.0.0
 jobs:
  build:
-  # Variable expansion in working_directory not supported at this time ((new content 2 to 3))
+  # Variable expansion in working_directory not supported at this time (new content 2 to 3)
   # You will need to modify the code below to reflect your github account/repo setup
   working_directory: /go/src/github.com/tinchocafferata/invoicer-chapter2to3
   # executor: aws-cli/default
