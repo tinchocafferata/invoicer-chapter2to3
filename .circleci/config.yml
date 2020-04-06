@@ -5,7 +5,7 @@ jobs:
  build:
   # Variable expansion in working_directory not supported at this time ((new content 2))
   # You will need to modify the code below to reflect your github account/repo setup
-  working_directory: /go/src/github.com/tinchocafferata/invoicer-chapter2
+  working_directory: /go/src/github.com/tinchocafferata/invoicer-chapter2to3
   # executor: aws-cli/default
   docker:
    - image: circleci/golang:1.10
