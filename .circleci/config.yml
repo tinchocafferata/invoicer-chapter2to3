@@ -13,9 +13,9 @@ jobs:
      #never finishes, this environment variable must be set to prevent that
      environment: 
       PAGER: cat
-  branches:
-   only:
-    - master
+    branches:
+      only:
+        - master
   steps:
    - checkout
    - setup_remote_docker
