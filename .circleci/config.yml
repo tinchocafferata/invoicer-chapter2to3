@@ -45,6 +45,14 @@ jobs:
        name: ZAP baseline test of application
        # Only fail on error code 1, which indicates at least one FAIL was found.
        # error codes 2 & 3 indicate WARN or other, and should not break the run
+       # The 172.17.0.2 IP address is internal to the virtual machine that is running the Docker engine
+       # ZAP Docker image documentation: https://github.com/zaproxy/zaproxy/wiki/Docker
+       # ZAP Baseline Scan documentation: https://github.com/zaproxy/zaproxy/wiki/ZAP-Baseline-Scan
+       # -u flag is used to load a configuration file from a URL
+       # -t points the target to scan
+       # We have an OR clause, so both statements will be evaluated always. On the first clause, both commands need to run,
+       # and they will set the exit status that is later evaluated in the second condition. We need the second condition to
+       # always run, so that we can continue the job or stop depending on the results of the scan
        command: |
          (
          docker pull owasp/zap2docker-weekly && \
