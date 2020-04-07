@@ -6,17 +6,13 @@ jobs:
   # Variable expansion in working_directory not supported at this time (new content 2 to 3)
   # You will need to modify the code below to reflect your github account/repo setup
   working_directory: /go/src/github.com/tinchocafferata/invoicer-chapter2to3
-  branches:
-   only:
-    - master
   docker:
    - image: circleci/golang:1.10
      #The awscli beanstalk command freezes waiting for user input and the job
      #never finishes, this environment variable must be set to prevent that
      environment: 
       PAGER: cat
-      
-
+     
   steps:
    - checkout
    - setup_remote_docker
