@@ -14,8 +14,8 @@ jobs:
      environment: 
       PAGER: cat
   branches:
-     only:
-       - master
+   only:
+    - master
   steps:
    - checkout
    - setup_remote_docker
