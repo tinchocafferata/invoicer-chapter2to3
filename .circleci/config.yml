@@ -13,7 +13,7 @@ jobs:
      #never finishes, this environment variable must be set to prevent that
      environment: 
       PAGER: cat
-   branches:
+  branches:
      only:
        - master
   steps:
