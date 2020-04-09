@@ -73,9 +73,17 @@ func main() {
 	r.HandleFunc("/invoice/delete/{id:[0-9]+}", iv.deleteInvoice).Methods("GET")
 	r.HandleFunc("/__version__", getVersion).Methods("GET")
 
+	changeHeaderThenServe := func(h http.Handler) http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+		  // Set some header.
+		  w.Header().Add("X-Content-Type-Options", "nosniff")
+		  // Serve with the actual handler.
+		  h.ServeHTTP(w, r)
+	}
+
 	// handle static files
 	r.Handle("/statics/{staticfile}",
-		http.StripPrefix("/statics/", http.FileServer(http.Dir("./statics"))),
+		http.StripPrefix("/statics/", changeHeaderThenServe(http.FileServer(http.Dir("./statics")))),
 	).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080",
