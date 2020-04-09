@@ -30,7 +30,7 @@ jobs:
 
    - run:
        name: Test dependencies are up to date
-       command: cd ${GOPATH_BASE}
+       command: govend
        
    - run:
        name: Build application container
