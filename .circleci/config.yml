@@ -52,7 +52,7 @@ jobs:
        # -t points the target to scan
        # We have an OR clause, so both statements will be evaluated always. On the first clause, both commands need to run,
        # and they will set the exit status that is later evaluated in the second condition. We need the second condition to
-       # always run, so that we can continue the job or stop depending on the results of the scan
+       # always run,  so that we can continue the job or stop depending on the results of the scan
        command: |
          (
          docker pull owasp/zap2docker-weekly && \
