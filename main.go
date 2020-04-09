@@ -83,7 +83,7 @@ func main() {
 
 	// handle static files
 	r.Handle("/statics/{staticfile}",
-		http.StripPrefix("/statics/", changeHeaderThenServe(http.FileServer(http.Dir("./statics")))),
+		changeHeaderThenServe(http.StripPrefix("/statics/", http.FileServer(http.Dir("./statics")))),
 	).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8080",
