@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  aws-cli: circleci/aws-cli@1.0.0
 jobs:
  build:
   # Variable expansion in working_directory not supported at this time (new content 2 to 3)
@@ -18,8 +16,6 @@ jobs:
   steps:
    - checkout
    - setup_remote_docker
-   - aws-cli/setup:
-         profile-name: circleci
   
    - run: echo 'export GOPATH_HEAD="$(echo ${GOPATH}|cut -d ':' -f 1)"' >> $BASH_ENV
    - run: echo 'export GOPATH_BASE="${GOPATH_HEAD}/src/github.com/${CIRCLE_PROJECT_USERNAME}"' >> $BASH_ENV
