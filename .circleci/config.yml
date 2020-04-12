@@ -62,7 +62,12 @@ jobs:
              -t http://172.17.0.2:8080/ || \
          if [ $? -ne 1 ]; then exit 0; else exit 1; fi;
          )
-          
+
+      # sudo apt-get update && sudo apt-get install -yy less;
+      # export TERM=dumb && aws elasticbeanstalk update-environment \
+      #  --application-name invoicer --environment-id e-ybjw8c5g9f \
+      #  --version-label invoicer-api;
+
    - deploy:
        command: |
          if [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -75,8 +80,6 @@ jobs:
            docker images --no-trunc | awk '/^app/ {print $3}' | \
              sudo tee $CIRCLE_ARTIFACTS/docker-image-shasum256.txt;
            docker push ${DOCKER_REPO}/${CIRCLE_PROJECT_REPONAME};
-           sudo apt-get update && sudo apt-get install -yy less;
-           export TERM=dumb && aws elasticbeanstalk update-environment \
-            --application-name invoicer --environment-id e-ybjw8c5g9f \
-            --version-label invoicer-api;
          fi
+
+
